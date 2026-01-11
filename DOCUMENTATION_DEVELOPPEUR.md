@@ -1,6 +1,6 @@
 # 📚 Documentation Développeur - France Justice
 
-> **Version:** 2.2.0  
+> **Version:** 2.3.0  
 > **Date:** 11 janvier 2026  
 > **Stack:** Next.js 14 + TypeScript + Tailwind CSS + Framer Motion
 
@@ -300,6 +300,19 @@ import {
   Breadcrumb,
   TOC,
   FAQSection,
+  GlowButton,
+  PrimaryButton,
+  SecondaryButton,
+  ComparisonTable,
+  ProsCons,
+  Verdict,
+  ProcedureSchema,
+  Timeline,
+  Stepper,
+  GlossaryTooltip,
+  ArticleNavigation,
+  FeedbackWidget,
+  ShareButtons,
   // ...
 } from '@/components/ui';
 ```
@@ -314,6 +327,7 @@ import {
 | `ArticleCard` | `title, category, categoryColor, date, image, href` | Carte article actualité |
 | `FormCard` | `cerfa, title, href, downloadUrl?` | Carte formulaire CERFA |
 | `HubLinkCard` | `title, href` | Lien style chip |
+| `ComparatorCard` | `title, optionA, optionB, href` | Carte comparateur |
 
 #### Callouts
 
@@ -323,21 +337,65 @@ import {
 | `WarningCallout` | Ambre | ⚠️ |
 | `ErrorCallout` | Rouge | ❌ |
 | `SuccessCallout` | Vert | ✅ |
+| `ExampleCallout` | Gris | 📝 |
 
 #### Navigation
 
 | Composant | Description |
 |-----------|-------------|
 | `Breadcrumb` | Fil d'Ariane avec dropdown |
-| `TOC` | Table des matières sticky |
+| `TOC` | Table des matières sticky avec progression |
+| `MobileTOC` | TOC mobile avec drawer |
 | `FAQSection` | Section FAQ accordéon |
+| `ArticleNavigation` | Navigation Précédent/Suivant |
+
+#### Boutons Premium
+
+| Composant | Description |
+|-----------|-------------|
+| `GlowButton` | Bouton avec effet glow animé |
+| `PrimaryButton` | CTA rouge avec gradient |
+| `SecondaryButton` | CTA bleu avec gradient |
+| `GhostButton` | Bouton transparent |
+| `OutlineButton` | Bouton avec bordure |
+
+#### Comparaison
+
+| Composant | Description |
+|-----------|-------------|
+| `ComparisonTable` | Tableau comparatif côte à côte |
+| `ProsCons` | Avantages/Inconvénients |
+| `Verdict` | Bloc de décision finale |
+
+#### Procédures
+
+| Composant | Description |
+|-----------|-------------|
+| `ProcedureSchema` | Étapes verticales interactives |
+| `Timeline` | Chronologie horizontale |
+| `Stepper` | Indicateur d'étapes (horizontal/vertical) |
+| `ProgressSteps` | Étapes inline simples |
+
+#### Glossaire
+
+| Composant | Description |
+|-----------|-------------|
+| `GlossaryTooltip` | Infobulle définition au hover |
+| `GlossaryText` | Texte avec termes auto-liés |
+
+#### Social & Feedback
+
+| Composant | Description |
+|-----------|-------------|
+| `ShareButtons` | Partage X, LinkedIn, Facebook, Copier |
+| `FeedbackWidget` | Widget "Cette page vous a été utile ?" |
 
 #### Interactions
 
 | Composant | Description |
 |-----------|-------------|
 | `SearchBar` | Recherche glassmorphism |
-| `GlowButton` | Bouton avec effet glow |
+| `Accordion` | Accordéon animé |
 
 ---
 
@@ -866,6 +924,17 @@ npm run dev
 
 ## 📝 Changelog
 
+### v2.3.0 (11/01/2026)
+- ✅ **Style Guide complet** : Ajout de 6 nouvelles sections
+  - 🧭 Navigation : Breadcrumb, TOC, Article Navigation
+  - 📂 Accordéon : FAQ Section interactive
+  - ⚖️ Comparaison : Table, Pros/Cons, Verdict
+  - 📋 Procédures : Schema, Timeline, Stepper
+  - 📖 Glossaire : Tooltip, Index alphabétique
+  - 🔗 Social : Share Buttons, Feedback Widget, Newsletter
+- ✅ **Documentation composants** : Liste complète des 30+ composants UI
+- ✅ **GlowButton** : Ajout des boutons premium avec variants
+
 ### v2.2.0 (11/01/2026)
 - ✅ **Uniformisation des gradients** : Toutes les pages utilisent désormais le même gradient bleu-rouge
 - ✅ **Page Hub** : Gradient corrigé (bleu-orange → bleu-rouge)
@@ -895,4 +964,4 @@ npm run dev
 
 ---
 
-*Documentation mise à jour le 11/01/2026 - v2.2.0*
+*Documentation mise à jour le 11/01/2026 - v2.3.0*
