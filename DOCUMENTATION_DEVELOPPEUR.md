@@ -18,7 +18,8 @@
 8. [SEO et Google Discover](#8-seo-et-google-discover)
 9. [Conventions de code](#9-conventions-de-code)
 10. [Ajouter du contenu](#10-ajouter-du-contenu)
-11. [Dépannage](#11-dépannage)
+11. [Workflow Multi-Agents avec Git Worktrees](#11-workflow-multi-agents-avec-git-worktrees)
+12. [Dépannage](#12-dépannage)
 
 ---
 
@@ -707,7 +708,123 @@ export default function Component({ title, href }: ComponentProps) {
 
 ---
 
-## 11. Dépannage
+## 11. Workflow Multi-Agents avec Git Worktrees
+
+### 🌳 Qu'est-ce que Git Worktrees ?
+
+**Git Worktrees** permet d'avoir **plusieurs copies de travail** du même dépôt, chacune sur une branche différente, **sans cloner plusieurs fois le repo**. C'est idéal pour faire travailler plusieurs agents IA en parallèle.
+
+### Avantages pour le développement multi-agents
+
+| Avantage | Description |
+|----------|-------------|
+| **Isolation totale** | Chaque agent travaille dans son propre dossier |
+| **Pas de conflits** | Plus besoin de `git stash` ou switch de branche |
+| **Même dépôt** | Tous les worktrees partagent le même `.git` |
+| **Merge facile** | Les branches se mergent comme d'habitude |
+| **Économie d'espace** | Un seul `.git` pour tous les worktrees |
+
+### Commandes essentielles
+
+```bash
+# Créer un worktree avec une nouvelle branche
+git worktree add ../france-justice-feature feature/nom-feature
+
+# Créer un worktree pour une branche existante
+git worktree add ../france-justice-hotfix hotfix/urgent
+
+# Lister tous les worktrees
+git worktree list
+
+# Supprimer un worktree
+git worktree remove ../france-justice-feature
+
+# Nettoyer les worktrees orphelins
+git worktree prune
+```
+
+### Configuration multi-agents pour France Justice
+
+**Structure recommandée :**
+
+```
+FRANCE-JUSTICE-PROJECT/
+├── france-justice/              ← main (repo principal)
+├── fj-blog/                     ← feature/blog (Agent 1)
+├── fj-seo/                      ← feature/seo (Agent 2)
+├── fj-forms/                    ← feature/forms (Agent 3)
+└── fj-hotfix/                   ← hotfix/urgent (Agent 4)
+```
+
+**Setup complet :**
+
+```bash
+# Depuis le repo principal
+cd /Users/tomcannaoa/Desktop/DEV/FRANCE-JUSTICE-PROJECT/france-justice
+
+# Agent 1 : Développement du blog
+git worktree add -b feature/blog ../fj-blog
+
+# Agent 2 : Optimisation SEO
+git worktree add -b feature/seo ../fj-seo
+
+# Agent 3 : Nouveaux formulaires
+git worktree add -b feature/forms ../fj-forms
+
+# Agent 4 : Hotfixes urgents
+git worktree add -b hotfix/urgent ../fj-hotfix
+```
+
+### Workflow avec Cursor
+
+1. **Ouvrir plusieurs fenêtres Cursor** : `Cmd + Shift + N`
+2. **Ouvrir un worktree différent** dans chaque fenêtre
+3. **Donner une tâche spécifique** à chaque agent
+4. **Merger les branches** quand les features sont prêtes
+
+```bash
+# Depuis le repo principal (france-justice/)
+git checkout main
+git merge feature/blog
+git merge feature/seo
+git push origin main
+```
+
+### Bonnes pratiques
+
+| Règle | Pourquoi |
+|-------|----------|
+| **1 branche = 1 feature** | Évite les conflits de merge |
+| **Nommer clairement** | `feature/`, `fix/`, `hotfix/` préfixes |
+| **Merge régulièrement** | Évite les branches trop divergentes |
+| **Supprimer après merge** | `git worktree remove` + `git branch -d` |
+| **Installer les deps** | Faire `npm install` dans chaque worktree |
+
+### Synchronisation entre worktrees
+
+```bash
+# Mettre à jour main dans un worktree
+cd ../fj-blog
+git fetch origin
+git rebase origin/main
+
+# Ou merger main dans la feature
+git merge main
+```
+
+### Alternatives au Multi-Agents
+
+| Méthode | Avantages | Inconvénients |
+|---------|-----------|---------------|
+| **Git Worktrees** | Simple, natif Git | Setup manuel |
+| **Multi-fenêtres Cursor** | Rapide | Même branche |
+| **Claude Code CLI** | Scriptable | Terminal only |
+| **CrewAI / AutoGen** | Orchestration avancée | Setup complexe |
+| **N8N workflows** | Automatisation | Overhead config |
+
+---
+
+## 12. Dépannage
 
 ### Problème : Les animations ne fonctionnent pas
 
@@ -749,6 +866,10 @@ npm run dev
 ---
 
 ## 📝 Changelog
+
+### v2.1.0 (11/01/2026)
+- ✅ **Git Worktrees** : Documentation workflow multi-agents
+- ✅ **GitHub** : Repo public sur github.com/Tomassous-38/france-justice
 
 ### v2.0.0 (11/01/2026)
 - ✅ **Nouveau design fluide** avec gradients et animations

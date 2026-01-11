@@ -4,6 +4,7 @@
 
 Site d'information juridique moderne destiné au grand public. Interface premium style "French Tech / Startup" avec animations fluides et design épuré.
 
+[![GitHub](https://img.shields.io/badge/GitHub-Tomassous--38%2Ffrance--justice-181717?logo=github)](https://github.com/Tomassous-38/france-justice)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-38B2AC)
@@ -78,6 +79,26 @@ Consultez la [Documentation Développeur](./DOCUMENTATION_DEVELOPPEUR.md) pour :
 - Liste des composants UI
 - Conventions de code
 - Guide d'ajout de contenu
+- **Workflow Multi-Agents avec Git Worktrees**
+
+---
+
+## 🤖 Développement Multi-Agents
+
+Ce projet supporte le développement avec plusieurs agents IA en parallèle via **Git Worktrees**.
+
+```bash
+# Créer des worktrees pour chaque agent
+git worktree add -b feature/blog ../fj-blog
+git worktree add -b feature/seo ../fj-seo
+git worktree add -b feature/forms ../fj-forms
+
+# Chaque agent travaille dans son propre dossier
+# Merger les branches quand les features sont prêtes
+git checkout main && git merge feature/blog
+```
+
+Voir la [documentation complète](./DOCUMENTATION_DEVELOPPEUR.md#11-workflow-multi-agents-avec-git-worktrees) pour plus de détails.
 
 ---
 
