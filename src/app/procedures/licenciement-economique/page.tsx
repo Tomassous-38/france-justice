@@ -280,7 +280,7 @@ export default function LicenciementEconomiquePage() {
       <section 
         className="relative pt-32 pb-16 overflow-hidden"
         style={{ 
-          background: `linear-gradient(135deg, ${colors.blueDark}f5 0%, ${colors.bluePrimary}e8 50%, ${colors.amber}dd 100%)`
+          background: `linear-gradient(135deg, ${colors.blueDark}f5 0%, ${colors.bluePrimary}e8 50%, ${colors.red}dd 100%)`
         }}
       >
         <motion.div 
@@ -323,6 +323,12 @@ export default function LicenciementEconomiquePage() {
             </div>
         </motion.div>
       </section>
+
+      {/* Gradient Separator */}
+      <div 
+        className="w-full h-1"
+        style={{ background: `linear-gradient(90deg, ${colors.bluePrimary}, ${colors.red})` }}
+      />
 
       {/* Timeline Visual */}
       <section className="py-12" style={{ background: colors.gray50 }}>

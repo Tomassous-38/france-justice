@@ -100,7 +100,7 @@ export default function SASvsSARLPage() {
       <section 
         className="relative pt-32 pb-16 overflow-hidden"
         style={{ 
-          background: `linear-gradient(135deg, ${colors.blueDark}f5 0%, ${colors.purple}e0 50%, ${colors.red}dd 100%)`
+          background: `linear-gradient(135deg, ${colors.blueDark}f5 0%, ${colors.bluePrimary}e8 50%, ${colors.red}dd 100%)`
         }}
       >
         <motion.div 

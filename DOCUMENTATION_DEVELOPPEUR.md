@@ -1,6 +1,6 @@
 # 📚 Documentation Développeur - France Justice
 
-> **Version:** 2.0.0  
+> **Version:** 2.2.0  
 > **Date:** 11 janvier 2026  
 > **Stack:** Next.js 14 + TypeScript + Tailwind CSS + Framer Motion
 
@@ -247,15 +247,14 @@ const colors = {
 ### 🌈 Gradients
 
 ```typescript
-// Hero gradient principal (bleu vers rouge)
+// Hero gradient principal (bleu vers rouge) - UTILISÉ SUR TOUTES LES PAGES
 background: `linear-gradient(135deg, ${colors.blueDark}f5 0%, ${colors.bluePrimary}e8 50%, ${colors.red}dd 100%)`
 
-// Gradient séparateur
+// Gradient séparateur (ligne sous le hero)
 background: `linear-gradient(90deg, ${colors.bluePrimary} 0%, ${colors.red} 100%)`
-
-// Gradient fiscal (bleu vers orange)
-background: `linear-gradient(135deg, ${colors.blueDark}f5 0%, ${colors.bluePrimary}e8 50%, ${colors.orange}dd 100%)`
 ```
+
+> **Note :** Toutes les pages (Hub, Catégorie, Procédure, Comparateur, etc.) utilisent le même gradient bleu-rouge pour garantir une cohérence visuelle.
 
 ### 🔲 Border Radius
 
@@ -867,6 +866,12 @@ npm run dev
 
 ## 📝 Changelog
 
+### v2.2.0 (11/01/2026)
+- ✅ **Uniformisation des gradients** : Toutes les pages utilisent désormais le même gradient bleu-rouge
+- ✅ **Page Hub** : Gradient corrigé (bleu-orange → bleu-rouge)
+- ✅ **Page Procédure** : Gradient corrigé + ajout séparateur gradient
+- ✅ **Page Comparateur** : Gradient corrigé (bleu-violet → bleu-rouge)
+
 ### v2.1.0 (11/01/2026)
 - ✅ **Git Worktrees** : Documentation workflow multi-agents
 - ✅ **GitHub** : Repo public sur github.com/Tomassous-38/france-justice
@@ -890,4 +895,4 @@ npm run dev
 
 ---
 
-*Documentation mise à jour le 11/01/2026*
+*Documentation mise à jour le 11/01/2026 - v2.2.0*
